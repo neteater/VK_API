@@ -8,12 +8,6 @@ import java.net.URLConnection;
  * Created by neteat on 29.12.2014.
  */
 public  class VK {
-    /*public boolean oauth() throws IOException {
-        String q="client_id="+this.client_id+"&scope="+this.scope+"&redirect_uri="+this.redirect_uri+"&display="+this.display+"&v="+this.v;
-        URLConnection connection=new URL("https://oauth.vk.com/authorize?"+q).openConnection();
-        String data = readStreamToString(connection.getInputStream(), "UTF-8");
-        return true;
-    }*/
     public static String access_token = "";
     public static final int client_id = 1;
     public static final String client_secret = "";
@@ -225,6 +219,27 @@ public  class VK {
             String q="wall.delete?owner_id="+owner_id+"&post_id="+post_id;
             return exec_method(q,true);
         }
+        public static  String restore(String owner_id,long post_id) throws IOException {
+            String q="wall.restore?owner_id="+owner_id+"&post_id="+post_id;
+            return exec_method(q,true);
+        }
+        public static  String pin(String owner_id,long post_id) throws IOException {
+            String q="wall.pin?owner_id="+owner_id+"&post_id="+post_id;
+            return exec_method(q,true);
+        }
+        public static  String unpin(String owner_id,long post_id) throws IOException {
+            String q="wall.unpin?owner_id="+owner_id+"&post_id="+post_id;
+            return exec_method(q,true);
+        }
+        public static String getComments(String owner_id,long post_id,boolean need_likes,int offset,int count,String sort,int length,boolean extended) throws IOException {
+            String q="wall.getComments?owner_id="+owner_id+"&post_id="+post_id+"&need_likes="+need_likes+"&offset="+offset+"&count="+count+"&sort="+sort+"&preview_length="+length+"&extended="+extended;
+            return exec_method(q,true);
+        }
+        public static String editComment(String owner_id,long comment_id,String msg,String attach) throws IOException {
+            String q="wall.editComment?owner_id="+owner_id+"&comment_id="+comment_id+"&message="+msg+"&attachments="+attach;
+            return exec_method(q,true);
+        }
+
 
     }
 
